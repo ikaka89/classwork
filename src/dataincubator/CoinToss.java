@@ -6,7 +6,7 @@ import java.util.List;
 public class CoinToss {
 	
 	// Number of coin tosses
-	public int N = 100;
+	public int N = 10;
 	
 	public static final double P_HEAD = 0.6;
 	public static final double P_TAIL = 0.4;
@@ -18,6 +18,7 @@ public class CoinToss {
 	
 	
 	public void travese(List<Block> path, Params param){
+		System.out.println(path.size());
 		if(path.size()>0){
 			Block tip = path.get(path.size()-1);
 			if(!(param.h>stictlyexceedingHeads)){
@@ -60,7 +61,6 @@ public class CoinToss {
 						travese(path,param);
 					}
 				}else{
-					System.out.println("here");
 					if(!tip.diag && param.r>0 && param.c>0 && dpMat[param.r-1][param.c-1].headTop > 0){ // go diag
 						tip.diag = true;
 						param.p = Math.exp( Math.log(param.p) + Math.log(P_TAIL) );
